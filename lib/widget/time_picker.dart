@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 
-
 class CustomHourPicker extends StatefulWidget {
   final DateTime? date;
   final DateTime? initDate;
@@ -14,6 +13,7 @@ class CustomHourPicker extends StatefulWidget {
   final TextStyle? titleStyle;
   final Function(BuildContext context, DateTime time)? onPositivePressed;
   final Function(BuildContext context)? onNegativePressed;
+  final Color? backgroundColor;
 
   const CustomHourPicker({
     Key? key,
@@ -28,6 +28,7 @@ class CustomHourPicker extends StatefulWidget {
     this.positiveButtonStyle,
     this.negativeButtonStyle,
     this.titleStyle,
+    this.backgroundColor,
   }) : super(key: key);
 
   @override
@@ -54,7 +55,8 @@ class _CustomHourPickerState extends State<CustomHourPicker> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      backgroundColor:
+          widget.backgroundColor ?? Theme.of(context).scaffoldBackgroundColor,
       elevation: widget.elevation ?? Theme.of(context).cardTheme.elevation,
       contentPadding: const EdgeInsets.only(top: 24, left: 24, right: 24),
       content: Column(
